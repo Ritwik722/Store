@@ -21,9 +21,18 @@ if (fs.existsSync(DATABASE_PATH)) {
 function initializeDatabase(db) {
   return new Promise((resolve) => {
     db.serialize(() => {
+      // Drop existing tables to force fresh seed
+      console.log('🗑️ Dropping old tables...');
+      db.run('DROP TABLE IF EXISTS order_items');
+      db.run('DROP TABLE IF EXISTS orders');
+      db.run('DROP TABLE IF EXISTS reviews');
+      db.run('DROP TABLE IF EXISTS products');
+      db.run('DROP TABLE IF EXISTS categories');
+      db.run('DROP TABLE IF EXISTS users');
+
       // Users table
       db.run(`
-        CREATE TABLE IF NOT EXISTS users (
+        CREATE TABLE users (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           username TEXT UNIQUE NOT NULL,
           email TEXT UNIQUE NOT NULL,
@@ -42,7 +51,7 @@ function initializeDatabase(db) {
 
       // Categories table
       db.run(`
-        CREATE TABLE IF NOT EXISTS categories (
+        CREATE TABLE categories (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           name TEXT NOT NULL,
           description TEXT,
@@ -52,7 +61,7 @@ function initializeDatabase(db) {
 
       // Products table
       db.run(`
-        CREATE TABLE IF NOT EXISTS products (
+        CREATE TABLE products (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           name TEXT NOT NULL,
           description TEXT,
@@ -68,7 +77,7 @@ function initializeDatabase(db) {
 
       // Reviews table
       db.run(`
-        CREATE TABLE IF NOT EXISTS reviews (
+        CREATE TABLE reviews (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           product_id INTEGER NOT NULL,
           user_id INTEGER NOT NULL,
@@ -82,7 +91,7 @@ function initializeDatabase(db) {
 
       // Orders table
       db.run(`
-        CREATE TABLE IF NOT EXISTS orders (
+        CREATE TABLE orders (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           user_id INTEGER NOT NULL,
           total_amount REAL NOT NULL,
@@ -98,7 +107,7 @@ function initializeDatabase(db) {
 
       // Order Items table
       db.run(`
-        CREATE TABLE IF NOT EXISTS order_items (
+        CREATE TABLE order_items (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           order_id INTEGER NOT NULL,
           product_id INTEGER NOT NULL,
