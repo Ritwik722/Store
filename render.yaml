@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: anshita-store
+    runtime: node
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm install && node seed.js && node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000

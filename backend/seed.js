@@ -1,8 +1,15 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
+const fs = require('fs');
 const bcrypt = require('bcryptjs');
 
-const DATABASE_PATH = path.join(__dirname, '../database/store.db');
+// Create database directory if it doesn't exist
+const dbDir = path.join(__dirname, '../database');
+if (!fs.existsSync(dbDir)) {
+  fs.mkdirSync(dbDir, { recursive: true });
+}
+
+const DATABASE_PATH = path.join(dbDir, 'store.db');
 
 // Initialize database and create tables
 function initializeDatabase(db) {

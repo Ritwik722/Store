@@ -1,7 +1,14 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
+const fs = require('fs');
 
-const DATABASE_PATH = path.join(__dirname, '../database/store.db');
+// Create database directory if it doesn't exist
+const dbDir = path.join(__dirname, '../database');
+if (!fs.existsSync(dbDir)) {
+  fs.mkdirSync(dbDir, { recursive: true });
+}
+
+const DATABASE_PATH = path.join(dbDir, 'store.db');
 
 let db;
 
@@ -12,7 +19,7 @@ function initializeDatabase() {
         console.error('Error opening database:', err);
         reject(err);
       } else {
-        console.log('Connected to SQLite database');
+        console.log('Connected to SQLite database at:', DATABASE_PATH);
         createTables();
         resolve(db);
       }
