@@ -11,6 +11,12 @@ if (!fs.existsSync(dbDir)) {
 
 const DATABASE_PATH = path.join(dbDir, 'store.db');
 
+// Delete existing database to force fresh seed
+if (fs.existsSync(DATABASE_PATH)) {
+  console.log('🗑️ Removing old database to force fresh seed...');
+  fs.unlinkSync(DATABASE_PATH);
+}
+
 // Initialize database and create tables
 function initializeDatabase(db) {
   return new Promise((resolve) => {
