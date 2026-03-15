@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Anshita General Store</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-brand">
+        <h1>अंशिता जनरल स्टोर</h1>
+        <p class="subtitle">Admin Dashboard</p>
+      </div>
+      <div class="navbar-menu">
+        <span id="adminName"></span>
+        <button id="visitStoreBtn" class="nav-button store-btn" title="Visit Store">🏪 Store</button>
+        <button id="homeBtn" class="nav-button home-btn" title="Go to Home">🏠 Home</button>
+        <button id="backBtn" class="nav-button back-btn" title="Go Back">← Back</button>
+        <button id="logoutBtn" class="nav-button logout-btn">🚪 Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="admin-container">
+    <aside class="admin-sidebar">
+      <div class="sidebar-menu">
+        <button class="menu-item active" data-section="dashboard">📊 Dashboard</button>
+        <button class="menu-item" data-section="products">📦 Products</button>
+        <button class="menu-item" data-section="categories">🏷️ Categories</button>
+        <button class="menu-item" data-section="orders">📋 Orders</button>
+        <hr style="margin: 15px 0; border: none; border-top: 1px solid #ddd;">
+        <button class="menu-item" id="refreshBtn" style="background-color: #f0f0f0;">🔄 Refresh Data</button>
+        <button class="menu-item" id="sidebarBackBtn" style="background-color: #f0f0f0;">← Back to Store</button>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <!-- Dashboard Section -->
+      <section id="dashboard" class="admin-section active">
+        <h1>Dashboard</h1>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <h3>Total Orders</h3>
+            <p class="stat-number" id="totalOrders">0</p>
+          </div>
+          <div class="stat-card">
+            <h3>Total Products</h3>
+            <p class="stat-number" id="totalProducts">0</p>
+          </div>
+          <div class="stat-card">
+            <h3>Total Revenue</h3>
+            <p class="stat-number" id="totalRevenue">₹0</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Products Section -->
+      <section id="products" class="admin-section">
+        <h1>Product Management</h1>
+        
+        <div class="admin-form">
+          <h2>Add/Edit Product</h2>
+          <input type="hidden" id="productIdEdit">
+          <div class="form-group">
+            <label>Product Name *</label>
+            <input type="text" id="productName" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <textarea id="productDescription" class="form-control"></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Category</label>
+              <select id="productCategory" class="form-control">
+                <option value="">Select Category</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Price *</label>
+              <input type="number" id="productPrice" class="form-control" min="0" step="0.01">
+            </div>
+            <div class="form-group">
+              <label>Stock</label>
+              <input type="number" id="productStock" class="form-control" min="0">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Product Image</label>
+            <div class="image-upload-group">
+              <input type="file" id="productImageFile" class="form-control" accept="image/*">
+              <div id="imagePreview" class="image-preview"></div>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-primary" id="addProductBtn">Add Product</button>
+            <button class="btn btn-secondary" id="cancelEditBtn" style="display: none;">Cancel Edit</button>
+          </div>
+        </div>
+
+        <div class="admin-list">
+          <h2>Products List</h2>
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="productsTable">
+              <!-- Products will be loaded here -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Categories Section -->
+      <section id="categories" class="admin-section">
+        <h1>Category Management</h1>
+        
+        <div class="admin-form">
+          <h2>Add New Category</h2>
+          <div class="form-group">
+            <label>Category Name *</label>
+            <input type="text" id="categoryName" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <textarea id="categoryDescription" class="form-control"></textarea>
+          </div>
+          <button class="btn btn-primary" id="addCategoryBtn">Add Category</button>
+        </div>
+
+        <div class="admin-list">
+          <h2>Categories List</h2>
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="categoriesTable">
+              <!-- Categories will be loaded here -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Orders Section -->
+      <section id="orders" class="admin-section">
+        <h1>Orders Management</h1>
+        
+        <div class="admin-list">
+          <h2>Recent Orders</h2>
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>User</th>
+                <th>Total Amount</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="ordersTable">
+              <!-- Orders will be loaded here -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

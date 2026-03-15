@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products - Anshita General Store</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/products.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-brand">
+        <h1>अंशिता जनरल स्टोर</h1>
+        <p class="subtitle">Anshita General Store</p>
+      </div>
+      <div class="navbar-menu">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/products.html" class="nav-link active">Products</a>
+        <a href="/cart.html" class="nav-link">Cart <span class="cart-count" id="cartCount">0</span></a>
+        <button id="authBtn" class="nav-button">Login</button>
+        <button id="adminBtn" class="nav-button admin-btn" style="display: none;">Admin</button>
+        <button id="logoutBtn" class="nav-button logout-btn" style="display: none;">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="products-page">
+    <div class="container">
+      <div class="products-layout">
+        <aside class="filters">
+          <h3>Filters</h3>
+          <div class="filter-group">
+            <label>Search</label>
+            <input type="text" id="searchInput" placeholder="Search products...">
+          </div>
+          <div class="filter-group">
+            <label>Category</label>
+            <select id="categoryFilter">
+              <option value="">All Categories</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" id="applyFilters">Apply Filters</button>
+        </aside>
+
+        <main class="products-main">
+          <div class="products-header">
+            <h2>Our Products</h2>
+            <p id="productCount">Loading products...</p>
+          </div>
+          <div class="products-grid" id="productsGrid">
+            <!-- Products will be loaded here -->
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Detail Modal -->
+  <div id="productModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <div class="product-detail">
+        <div class="product-image">
+          <img id="modalProductImage" src="" alt="Product">
+        </div>
+        <div class="product-info">
+          <h2 id="modalProductName"></h2>
+          <div class="product-rating">
+            <span id="modalProductRating">4.5</span> ⭐
+          </div>
+          <p id="modalProductDescription"></p>
+          <div class="product-meta">
+            <p><strong>Category:</strong> <span id="modalProductCategory">-</span></p>
+            <p><strong>Stock:</strong> <span id="modalProductStock">0</span></p>
+          </div>
+          <div class="product-price">
+            <span class="price" id="modalProductPrice">₹0</span>
+          </div>
+          <div class="product-actions">
+            <input type="number" id="quantityInput" class="quantity-input" value="1" min="1" max="100">
+            <button class="btn btn-primary" id="addToCartBtn">Add to Cart</button>
+          </div>
+          <div class="reviews-section">
+            <h3>Customer Reviews</h3>
+            <div id="reviewsList"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Authentication Modal -->
+  <div id="authModal" class="modal" style="display: none;">
+    <div class="modal-content auth-modal">
+      <button class="modal-close">&times;</button>
+      <div class="auth-container">
+        <div id="loginForm" class="auth-form">
+          <h2>Login</h2>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="loginEmail" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="loginPassword" class="form-control">
+          </div>
+          <button class="btn btn-primary btn-block" id="loginBtn">Login</button>
+          <p>Don't have an account? <button class="link-btn" id="switchToRegister">Register here</button></p>
+        </div>
+
+        <div id="registerForm" class="auth-form" style="display: none;">
+          <h2>Create Account</h2>
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" id="regUsername" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="regEmail" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="regFullName" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="regPassword" class="form-control">
+          </div>
+          <button class="btn btn-primary btn-block" id="registerBtn">Create Account</button>
+          <p>Already have an account? <button class="link-btn" id="switchToLogin">Login here</button></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>About Us</h4>
+          <p>Quality stationery and general items in Indore, MP</p>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p>Phone: 087700 14615</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/products.js"></script>
+</body>
+</html>

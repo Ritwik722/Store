@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anshita General Store - Home</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-brand">
+        <h1>अंशिता जनरल स्टोर</h1>
+        <p class="subtitle">Anshita General Store - Stationery & More</p>
+      </div>
+      <div class="navbar-menu">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/products.html" class="nav-link">Products</a>
+        <a href="/cart.html" class="nav-link">Cart <span class="cart-count" id="cartCount">0</span></a>
+        <button id="authBtn" class="nav-button">Login</button>
+        <button id="adminBtn" class="nav-button admin-btn" style="display: none;">Admin</button>
+        <button id="logoutBtn" class="nav-button logout-btn" style="display: none;">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h2>Welcome to Anshita General Store</h2>
+        <p>Your one-stop shop for quality stationery and general items</p>
+        <div class="hero-info">
+          <div class="info-box">
+            <h3>📍 Location</h3>
+            <p>49, Street Number 2, Jai Bajrang Nagar<br>Indore, Madhya Pradesh 452011</p>
+          </div>
+          <div class="info-box">
+            <h3>📞 Contact</h3>
+            <p>Phone: 087700 14615</p>
+          </div>
+          <div class="info-box">
+            <h3>⏰ Hours</h3>
+            <p>Open until 11:30 PM</p>
+          </div>
+          <div class="info-box">
+            <h3>⭐ Rating</h3>
+            <p>5.0 (Based on customer reviews)</p>
+          </div>
+        </div>
+        <a href="/products.html" class="btn btn-primary">Shop Now</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="services">
+    <div class="container">
+      <h2>Our Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🏪</div>
+          <h3>In-store Shopping</h3>
+          <p>Visit our store for a wide selection of products</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📦</div>
+          <h3>In-store Pickup</h3>
+          <p>Order online and pick up at your convenience</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🚚</div>
+          <h3>Fast Delivery</h3>
+          <p>Get your products delivered to your doorstep</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reviews-section">
+    <div class="container">
+      <h2>Customer Reviews</h2>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p>"Reasonable rate, best service, best quality"</p>
+          <p class="reviewer">- Rithwik Suneliya</p>
+        </div>
+        <div class="review-card">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p>"Great products and excellent customer service!"</p>
+          <p class="reviewer">- Mayank Verma</p>
+        </div>
+        <div class="review-card">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p>"Best stationery store in Indore"</p>
+          <p class="reviewer">- Kashish Verma</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Authentication Modal -->
+  <div id="authModal" class="modal" style="display: none;">
+    <div class="modal-content auth-modal">
+      <button class="modal-close">&times;</button>
+      <div class="auth-container">
+        <div id="loginForm" class="auth-form">
+          <h2>Login</h2>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="loginEmail" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="loginPassword" class="form-control">
+          </div>
+          <button class="btn btn-primary btn-block" id="loginBtn">Login</button>
+          <p>Don't have an account? <button class="link-btn" id="switchToRegister">Register here</button></p>
+        </div>
+
+        <div id="registerForm" class="auth-form" style="display: none;">
+          <h2>Create Account</h2>
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" id="regUsername" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="regEmail" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="regFullName" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="regPassword" class="form-control">
+          </div>
+          <button class="btn btn-primary btn-block" id="registerBtn">Create Account</button>
+          <p>Already have an account? <button class="link-btn" id="switchToLogin">Login here</button></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>About Us</h4>
+          <p>Anshita General Store is a trusted retailer of quality stationery and general items in Indore, MP.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/products.html">Products</a></li>
+            <li><a href="/cart.html">Cart</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p>Phone: 087700 14615</p>
+          <p>Address: 49, Street Number 2, Jai Bajrang Nagar, Indore, MP 452011</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Anshita General Store. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

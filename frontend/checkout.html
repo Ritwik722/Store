@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Anshita General Store</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/products.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-brand">
+        <h1>अंशिता जनरल स्टोर</h1>
+        <p class="subtitle">Anshita General Store</p>
+      </div>
+      <div class="navbar-menu">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/products.html" class="nav-link">Products</a>
+        <a href="/cart.html" class="nav-link">Cart</a>
+        <button id="authBtn" class="nav-button">Login</button>
+        <button id="adminBtn" class="nav-button admin-btn" style="display: none;">Admin</button>
+        <button id="logoutBtn" class="nav-button logout-btn" style="display: none;">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="checkout-page">
+    <div class="container">
+      <h1>Checkout</h1>
+
+      <div id="notLoggedIn" style="padding: 20px; background: #fff3cd; border-radius: 5px; margin: 20px 0;">
+        <p>Please <button class="link-btn" id="loginCheckout">log in</button> to complete your purchase.</p>
+      </div>
+
+      <div id="checkoutContent" style="display: none;">
+        <div class="checkout-layout">
+          <div class="checkout-form">
+            <div class="form-section">
+              <h2>Shipping Address</h2>
+              <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="fullName" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="email" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Phone</label>
+                <input type="tel" id="phone" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Address</label>
+                <input type="text" id="address" class="form-control">
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>City</label>
+                  <input type="text" id="city" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>State</label>
+                  <input type="text" id="state" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Pincode</label>
+                  <input type="text" id="pincode" class="form-control">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h2>Payment Method</h2>
+              <div class="form-group">
+                <label>
+                  <input type="radio" name="paymentMethod" value="cod" checked>
+                  Cash on Delivery
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input type="radio" name="paymentMethod" value="online">
+                  Online Payment (Razorpay)
+                </label>
+              </div>
+            </div>
+
+            <button class="btn btn-primary btn-block" id="placeOrderBtn">Place Order</button>
+          </div>
+
+          <div class="order-summary">
+            <h2>Order Summary</h2>
+            <div id="orderItems"></div>
+            <div class="summary-row total">
+              <span>Total Amount:</span>
+              <span id="orderTotal">₹0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Authentication Modal -->
+  <div id="authModal" class="modal" style="display: none;">
+    <div class="modal-content auth-modal">
+      <button class="modal-close">&times;</button>
+      <div class="auth-container">
+        <div id="loginForm" class="auth-form">
+          <h2>Login</h2>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="loginEmail" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="loginPassword" class="form-control">
+          </div>
+          <button class="btn btn-primary btn-block" id="loginBtn">Login</button>
+          <p>Don't have an account? <button class="link-btn" id="switchToRegister">Register here</button></p>
+        </div>
+
+        <div id="registerForm" class="auth-form" style="display: none;">
+          <h2>Create Account</h2>
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" id="regUsername" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="regEmail" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="regFullName" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="regPassword" class="form-control">
+          </div>
+          <button class="btn btn-primary btn-block" id="registerBtn">Create Account</button>
+          <p>Already have an account? <button class="link-btn" id="switchToLogin">Login here</button></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>About Us</h4>
+          <p>Quality stationery and general items in Indore, MP</p>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p>Phone: 087700 14615</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+</html>

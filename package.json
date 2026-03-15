@@ -1,0 +1,24 @@
+{
+  "name": "anshita-store",
+  "version": "1.0.0",
+  "description": "Complete full-stack e-commerce website for Anshita General Store",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "npm run server",
+    "server": "cd backend && node server.js",
+    "seed": "cd backend && node seed.js",
+    "dev": "cd backend && node server.js"
+  },
+  "keywords": [
+    "ecommerce",
+    "store",
+    "shopping",
+    "nodejs",
+    "express"
+  ],
+  "author": "Anshita Store",
+  "license": "MIT",
+  "directories": {
+    "doc": "docs"
+  }
+}
