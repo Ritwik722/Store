@@ -303,6 +303,7 @@ async function seedDatabase() {
           try {
             const adminPassword = await hashPassword('admin123');
             const userPassword = await hashPassword('user123');
+            const newAdminPassword = await hashPassword('123456');
             
             // Admin user
             db.run(
@@ -311,6 +312,16 @@ async function seedDatabase() {
               function(err) {
                 if (err) console.error('Error inserting admin user:', err);
                 else console.log('✓ Admin user created (email: admin@anshita.com, password: admin123)');
+              }
+            );
+
+            // New admin user
+            db.run(
+              'INSERT OR IGNORE INTO users (username, email, password, full_name, is_admin) VALUES (?, ?, ?, ?, ?)',
+              ['rithwik', 'rithwiksune@gmail.com', newAdminPassword, 'Rithwik Admin', 1],
+              function(err) {
+                if (err) console.error('Error inserting new admin user:', err);
+                else console.log('✓ New admin user created (email: rithwiksune@gmail.com, password: 123456)');
               }
             );
 
@@ -335,9 +346,10 @@ async function seedDatabase() {
               reject(err);
             } else {
               console.log('\n✅ Database seeding completed successfully!');
-              console.log('📊 Added 5 categories, 15 products, and 2 test users');
+              console.log('📊 Added 5 categories, 15 products, and 3 test users');
               console.log('\n🔐 Test Accounts:');
               console.log('  Admin: admin@anshita.com / admin123');
+              console.log('  Admin: rithwiksune@gmail.com / 123456');
               console.log('  User: test@example.com / user123');
               resolve();
             }
