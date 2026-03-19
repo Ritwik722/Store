@@ -3,7 +3,7 @@ services:
     name: anshita-store
     runtime: node
     buildCommand: cd backend && npm install
-    startCommand: cd backend && npm install && node seed.js && node server.js
+    startCommand: cd backend && npm install && node server.js
     envVars:
       - key: NODE_ENV
         value: production
